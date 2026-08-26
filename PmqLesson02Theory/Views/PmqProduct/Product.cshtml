@@ -1,0 +1,26 @@
+﻿
+@{
+	ViewData["Title"] = "Thông tin sản phẩm";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@{
+	PmqProduct product = ViewData["product"] as PmqLesson02Theory.Models.PmqProduct;
+}
+
+<div class="alert alert-danger">
+	<h2> Dữ liệu lấy từ viewData </h2>
+	<p> Mã Sản PhầM: @product.productID </p>
+	<p> Tên Sản Phẩm: @product.productName</p>
+	<p> Năm sản Xuất: @product.YearRelease</p>
+	<p> Giá Sản Phẩm: @product.price </p>
+</div>
+
+<div class="alert alert-info">
+	<h2> Dữ liệu lấy từ ViewBag</h2>
+	<p> Mã Sản Phẩm: @ViewBag.product.productID</p>
+	<p> Tên Sản Phẩm: @ViewBag.product.productName</p>
+	<p> Năm Sản Xuất: @ViewBag.product.YearRelease</p>
+	<p> Giá Sản Phẩm: @ViewBag.product.price</p>
+</div>
