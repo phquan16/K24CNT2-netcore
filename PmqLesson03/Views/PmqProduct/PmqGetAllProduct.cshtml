@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Danh sách sản phẩm";
+
+    var product = ViewData["products"] as List<PmqLesson03.Models.PmqProduct>;
+}
+
+<div class="card">
+    <div class="card-header">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Year</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in product)
+                {
+                    <tr>
+                        <td>@item.PmqProductId</td>
+                        <td>@item.PmqProductName</td>
+                        <td>@item.PmqYearRelease</td>
+                        <td>@item.PmqPrice</td>
+                        <td>
+                            <a href="#" class="btn btn-info">Xem chi tiết</a>
+                            <a href="#" class="btn btn-primary">sửa</a>
+                            <a href="#" class="btn btn-danger">xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="5">Tổng số sản phẩm: @product.Count</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
