@@ -1,0 +1,48 @@
+﻿@model IEnumerable<PmqBt03.Models.PmqBook>
+@{
+    ViewData["title"] = "Index";
+}
+<h2> Danh sách các quyển sách</h2><from action="" method="POST" class="form-inline" role="form">
+<div class="form-group">
+    <select name="PmqAuthorID" class="form-control" asp-items="@ViewBag.authors">
+        <option value="">Lựa chọn tác giả</option>
+    </select>
+    <select name="PmqGenreId" class="form-control" asp-items="@ViewBag.genres">
+        <option value="">Lựa chọn thể loại</option>
+    </select>
+</div>
+<button type="submit" class="btn btn-primary">Tìm kiếm</button>
+<a asp-action="Create" class="btn btn-danger">Thêm Mới</a>
+</from>
+<hr />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Tiêu Đề</th>
+            <th>Tác Giả</th>
+            <th>Thể Loại</th>
+            <th>Giá</th>
+            <th>Hình ảnh</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.PmqId</td>
+                <td>@book.PmqTitle</td>
+                <td>@book.PmqAuthorID</td>
+                <td>@book.PmqGenreId</td>
+                <td>@book.PmqPrice</td>
+                <td>
+                    <img src="@book.PmqImages" alt="@book.PmqTitle" width="40" />
+                </td>
+                <td>
+                    <a asp-action="Edit" class="btn tbn-sm btn-primary">Sửa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
