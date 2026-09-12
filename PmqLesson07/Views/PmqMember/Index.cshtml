@@ -1,0 +1,58 @@
+﻿@model IEnumerable<PmqLesson07.Models.DataModels.PmqMember>
+
+@{
+    ViewData["Title"] = "Danh sach thanh vien";
+}
+<div class="card p-3">
+    <h1>@ViewData["Title"]</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary my-1">Thêm mới</a>
+    </p>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PmqUserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PmqPassword)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PmqFullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PmqEmail)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.PmqUserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.PmqPassword)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.PmqFullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.PmqEmail)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.PmqMemberId">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.PmqMemberId">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.PmqMemberId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

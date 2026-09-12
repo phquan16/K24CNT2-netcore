@@ -1,0 +1,46 @@
+﻿@model PmqLesson07.Models.DataModels.PmqMember
+
+@{
+    ViewData["Title"] = "Thêm Thành Viên";
+}
+<div class="card p-3">
+    <h1>Thêm Thành Viên</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" method="POST" asp-controller="PmqMember">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="PmqUserName" class="control-label"></label>
+                    <input asp-for="PmqUserName" class="form-control" />
+                    <span asp-validation-for="PmqUserName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="PmqPassword" class="control-label"></label>
+                    <input asp-for="PmqPassword" type="password" class="form-control" />
+                    <span asp-validation-for="PmqPassword" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="PmqFullName" class="control-label"></label>
+                    <input asp-for="PmqFullName" class="form-control" />
+                    <span asp-validation-for="PmqFullName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="PmqEmail" class="control-label"></label>
+                    <input asp-for="PmqEmail" type="email" class="form-control" />
+                    <span asp-validation-for="PmqEmail" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-3">
+                    <input type="submit" value="Ghi lại" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
