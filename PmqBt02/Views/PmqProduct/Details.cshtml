@@ -1,0 +1,34 @@
+﻿@model PmqBt02.Models.PmqProducts
+
+@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+}
+
+<div class="container mt-4">
+    <a asp-action="Index" class="btn btn-secondary mb-3"> Quay lại danh sách</a>
+
+    <div class="row">
+        <div class="col-md-5">
+            <img src="@Model.PmqImages" class="img-fluid rounded border" alt="@Model.PmqName" />
+        </div>
+        <div class="col-md-7">
+            <h2>@Model.PmqName</h2>
+            <hr />
+            <p class="fs-4">
+                <del class="text-muted fs-6">Giá cũ: @Model.PmqPrice.ToString("N0") đ</del><br />
+                <strong class="text-danger">Giá khuyến mãi: @Model.PmqPriceSale?.ToString("N0") đ</strong>
+            </p>
+            <p><strong>Mã sản phẩm (ID):</strong> @Model.PmqId</p>
+            <p><strong>Mã danh mục:</strong> @Model.PmqCategoryId</p>
+            <p><strong>Ngày tạo:</strong> @Model.PmqCreatedAt?.ToString("dd/MM/yyyy HH:mm")</p>
+            <p><strong>Trạng thái:</strong> @(Model.PmqStatus ? "Đang kinh doanh" : "Ngừng kinh doanh")</p>
+
+            <div class="alert alert-info mt-3">
+                <h5>Mô tả sản phẩm:</h5>
+                <p>@Model.PmqDescription</p>
+            </div>
+
+            <button class="btn btn-primary btn-lg mt-2"> Thêm vào giỏ hàng</button>
+        </div>
+    </div>
+</div>
