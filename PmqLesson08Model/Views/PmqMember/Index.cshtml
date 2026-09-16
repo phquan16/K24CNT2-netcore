@@ -1,0 +1,59 @@
+@model IEnumerable<PmqLesson08Model.Models.PmqMember>
+
+@{
+    ViewData["Title"] = "Danh sach thanh vien";
+}
+
+<div class="card p-3">
+    <div class="card-header">
+        <h1>@ViewData["Title"]</h1>
+        <a asp-action="PmqCreate">Them Moi</a>
+    </div>
+
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PmqUserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PmqPassWord)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PmqFullName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PmqEmail)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.PmqUserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.PmqPassWord)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.PmqFullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.PmqEmail)
+                        </td>
+                        <td>
+                            <a asp-action="PmqEdit" asp-route-id="@item.PmqMemberId">Sua</a> |
+                            <a asp-action="PmqDetails" asp-route-id="@item.PmqMemberId">Xem chi tiet</a> |
+                            <a asp-action="PmqDelete" asp-route-id="@item.PmqMemberId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
