@@ -1,0 +1,80 @@
+﻿@model PmqBt04.Models.PmqBt
+
+@{
+    ViewData["Title"] = "Chỉnh sửa sản phẩm";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm border-0 col-md-8 mx-auto">
+        <div class="card-header bg-warning text-dark">
+            <h4 class="mb-0">Cập nhật sản phẩm: @Model.PmqId</h4>
+        </div>
+        <div class="card-body">
+            <!-- THÊM enctype="multipart/form-data" -->
+            <form asp-action="Edit" enctype="multipart/form-data">
+                <input type="hidden" asp-for="PmqId" />
+                <input type="hidden" asp-for="PmqImages" /> <!-- Giữ lại tên ảnh cũ nếu không đổi -->
+
+                <div class="mb-3">
+                    <label asp-for="PmqName" class="form-label fw-bold">Tên sản phẩm</label>
+                    <input asp-for="PmqName" class="form-control" required />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="PmqPrice" class="form-label fw-bold">Giá bán</label>
+                        <input asp-for="PmqPrice" type="number" class="form-control" required />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="PmqSalePrice" class="form-label fw-bold">Giá khuyến mãi</label>
+                        <input asp-for="PmqSalePrice" type="number" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="PmqStatus" class="form-label fw-bold">Trạng thái</label>
+                        <select asp-for="PmqStatus" class="form-select">
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                            <option value="OutOfStock">OutOfStock</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="PmqCreateDate" class="form-label fw-bold">Ngày tạo</label>
+                        <input asp-for="PmqCreateDate" type="date" class="form-control" value="@Model.PmqCreateDate.ToString("yyyy-MM-dd")" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Ô CHỌN FILE ĐỔI ẢNH MỚI -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Đổi ảnh mới (nếu có)</label>
+                        <input type="file" name="ImageFile" class="form-control" accept="image/*" />
+                        @if (!string.IsNullOrEmpty(Model.PmqImages))
+                        {
+                            <div class="mt-2">
+                                <small class="text-muted">Ảnh hiện tại:</small><br />
+                                <img src="~/images/@Model.PmqImages" style="height: 50px; object-fit: cover;" class="rounded border" />
+                            </div>
+                        }
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="PmqCategoryId" class="form-label fw-bold">Mã danh mục</label>
+                        <input asp-for="PmqCategoryId" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PmqDescription" class="form-label fw-bold">Mô tả</label>
+                    <textarea asp-for="PmqDescription" class="form-control" rows="3"></textarea>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+                    <button type="submit" class="btn btn-warning">Cập nhật</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

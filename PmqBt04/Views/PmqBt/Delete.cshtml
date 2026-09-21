@@ -1,0 +1,29 @@
+﻿@model PmqBt04.Models.PmqBt
+
+@{
+    ViewData["Title"] = "Xóa sản phẩm";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm border-0 col-md-6 mx-auto border-danger">
+        <div class="card-header bg-danger text-white">
+            <h4 class="mb-0">Xác nhận xóa sản phẩm</h4>
+        </div>
+        <div class="card-body text-center">
+            <h5 class="text-danger mb-3">Bạn có chắc chắn muốn xóa sản phẩm này khỏi danh sách?</h5>
+            <div class="alert alert-light border text-start">
+                <p class="mb-1"><strong>Mã sản phẩm:</strong> @Model.PmqId</p>
+                <p class="mb-1"><strong>Tên sản phẩm:</strong> @Model.PmqName</p>
+                <p class="mb-0"><strong>Giá bán:</strong> @Model.PmqPrice.ToString("N0") VNĐ</p>
+            </div>
+
+            <form asp-action="Delete" method="post">
+                <input type="hidden" asp-for="PmqId" />
+                <div class="d-flex justify-content-center gap-2 mt-4">
+                    <a asp-action="Index" class="btn btn-secondary">Hủy bỏ</a>
+                    <button type="submit" class="btn btn-danger">Đồng ý Xóa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+﻿@model PmqBt04.Models.PmqBt
+
+@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+}
+
+<div class="container mt-4">
+    @if (Model == null)
+    {
+        <div class="alert alert-danger text-center shadow-sm col-md-8 mx-auto">
+            <h4 class="alert-heading">Không tìm thấy sản phẩm!</h4>
+            <p>Sản phẩm bạn đang tìm kiếm không tồn tại hoặc đã bị xóa khỏi hệ thống.</p>
+            <hr>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+        </div>
+    }
+    else
+    {
+        <div class="card shadow-sm border-0 col-md-8 mx-auto">
+            <div class="card-header bg-info text-white">
+                <h4 class="mb-0">Chi tiết sản phẩm: @Model.PmqName</h4>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">Mã sản phẩm</dt>
+                    <dd class="col-sm-8 fw-bold">@Model.PmqId</dd>
+
+                    <dt class="col-sm-4">Tên sản phẩm</dt>
+                    <dd class="col-sm-8">@Model.PmqName</dd>
+
+                    <dt class="col-sm-4">Giá bán</dt>
+                    <dd class="col-sm-8 text-primary fw-bold">@Model.PmqPrice.ToString("N0") VNĐ</dd>
+
+                    <dt class="col-sm-4">Giá khuyến mãi</dt>
+                    <dd class="col-sm-8 text-danger">
+                        @(Model.PmqSalePrice.HasValue ? Model.PmqSalePrice.Value.ToString("N0") + " VNĐ" : "Không có")
+                    </dd>
+
+                    <dt class="col-sm-4">Trạng thái</dt>
+                    <dd class="col-sm-8">
+                        <span class="badge bg-@(Model.PmqStatus == "Active" ? "success" : "warning")">
+                            @Model.PmqStatus
+                        </span>
+                    </dd>
+
+                    <dt class="col-sm-4">Ngày tạo</dt>
+                    <dd class="col-sm-8">@Model.PmqCreateDate.ToString("dd/MM/yyyy")</dd>
+
+                    <dt class="col-sm-4">Hình ảnh</dt>
+                    <dd class="col-sm-8">
+                        <img src="~/images/@Model.PmqImages" alt="@Model.PmqName" 
+                             class="img-fluid rounded shadow-sm" style="max-width: 200px; max-height: 200px; object-fit: cover;" 
+                             onerror="this.onerror=null;this.src='https://via.placeholder.com/200';" />
+                    </dd>
+
+                    <dt class="col-sm-4">Mã danh mục</dt>
+                    <dd class="col-sm-8">@Model.PmqCategoryId</dd>
+
+                    <dt class="col-sm-4">Mô tả</dt>
+                    <dd class="col-sm-8">@Model.PmqDescription</dd>
+                </dl>
+            </div>
+            <div class="card-footer bg-light d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+                <a asp-action="Edit" asp-route-id="@Model.PmqId" class="btn btn-warning">Chỉnh sửa</a>
+            </div>
+        </div>
+    }
+</div>
