@@ -1,0 +1,60 @@
+@model PmqLesson09.Models.DataViewModels.PmqMemberRegister
+
+@{
+    ViewData["Title"] = "Thanh vien moi";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>PmqMemberRegister</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PmqMemberId" class="control-label"></label>
+                <input asp-for="PmqMemberId" class="form-control" />
+                <span asp-validation-for="PmqMemberId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PmqUserName" class="control-label"></label>
+                <input asp-for="PmqUserName" class="form-control" />
+                <span asp-validation-for="PmqUserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PmqPassword" class="control-label"></label>
+                <input asp-for="PmqPassword" class="form-control" />
+                <span asp-validation-for="PmqPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PmqEmail" class="control-label"></label>
+                <input asp-for="PmqEmail" class="form-control" />
+                <span asp-validation-for="PmqEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PmqPhoneNumber" class="control-label"></label>
+                <input asp-for="PmqPhoneNumber" class="form-control" />
+                <span asp-validation-for="PmqPhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PmqFullName" class="control-label"></label>
+                <input asp-for="PmqFullName" class="form-control" />
+                <span asp-validation-for="PmqFullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PmqBirthday" class="control-label"></label>
+                <input asp-for="PmqBirthday" class="form-control" />
+                <span asp-validation-for="PmqBirthday" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

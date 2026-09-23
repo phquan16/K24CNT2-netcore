@@ -1,0 +1,75 @@
+﻿@model IEnumerable<PmqLesson09.Models.DataViewModels.PmqMemberRegister>
+
+@{
+    ViewData["Title"] = "Danh sach thanh vien";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PmqMemberId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PmqUserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PmqPassword)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PmqEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PmqPhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PmqFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PmqBirthday)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PmqMemberId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PmqUserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PmqPassword)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PmqEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PmqPhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PmqFullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PmqBirthday)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.PmqMemberId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.PmqMemberId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.PmqMemberId">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
