@@ -1,0 +1,65 @@
+﻿@model PmqLesson10.Models.PmqMember
+
+@{
+    ViewData["Title"] = "Sửa Thành viên";
+}
+
+<div class="container mt-4">
+    <h2>Chỉnh sửa Thành viên</h2>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <!-- BẮT BUỘC: Thẻ ẩn chứa MemberId để gửi về Controller -->
+                <input type="hidden" asp-for="MemberId" />
+
+                <div class="mb-3">
+                    <label asp-for="PmqUserName" class="form-label">Tài khoản</label>
+                    <input asp-for="PmqUserName" class="form-control" />
+                    <span asp-validation-for="PmqUserName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PmqPassword" class="form-label">Mật khẩu</label>
+                    <input asp-for="PmqPassword" type="password" class="form-control" />
+                    <span asp-validation-for="PmqPassword" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PmqFullName" class="form-label">Họ và Tên</label>
+                    <input asp-for="PmqFullName" class="form-control" />
+                    <span asp-validation-for="PmqFullName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PmqEmail" class="form-label">Email</label>
+                    <input asp-for="PmqEmail" type="email" class="form-control" />
+                    <span asp-validation-for="PmqEmail" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PmqPhone" class="form-label">Số điện thoại</label>
+                    <input asp-for="PmqPhone" class="form-control" />
+                    <span asp-validation-for="PmqPhone" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3 form-check">
+                    <input class="form-check-input" asp-for="PmqStatus" />
+                    <label class="form-check-label" asp-for="PmqStatus">Kích hoạt tài khoản</label>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                    <a asp-action="Index" class="btn btn-secondary ms-2">Hủy bỏ</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
