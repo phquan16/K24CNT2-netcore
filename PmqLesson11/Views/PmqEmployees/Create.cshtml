@@ -1,0 +1,71 @@
+@model PmqLesson11.Models.PmqEmployee
+
+@{
+    ViewData["Title"] = "Thêm Mới Sinh Viên";
+}
+
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow border-0">
+                <div class="card-header bg-success text-white py-3">
+                    <h4 class="mb-0 fw-bold"><i class="bi bi-person-plus-fill me-2"></i>Thêm Mới Nhân Viên</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="PmqName" class="form-label fw-semibold">Họ và Tên</label>
+                            <input asp-for="PmqName" class="form-control" placeholder="Nhập họ và tên..." />
+                            <span asp-validation-for="PmqName" class="text-danger small"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="PmqGender" class="form-label fw-semibold">Giới Tính</label>
+                                <input asp-for="PmqGender" class="form-control" placeholder="Nam/Nữ..." />
+                                <span asp-validation-for="PmqGender" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="PmqBirthDay" class="form-label fw-semibold">Ngày Sinh</label>
+                                <input asp-for="PmqBirthDay" type="date" class="form-control" />
+                                <span asp-validation-for="PmqBirthDay" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="PmqEmail" class="form-label fw-semibold">Email</label>
+                            <input asp-for="PmqEmail" type="email" class="form-control" placeholder="example@domain.com" />
+                            <span asp-validation-for="PmqEmail" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="PmqPhone" class="form-label fw-semibold">Số Điện Thoại</label>
+                            <input asp-for="PmqPhone" class="form-control" placeholder="0901234567..." />
+                            <span asp-validation-for="PmqPhone" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-4 form-check form-switch">
+                            <input class="form-check-input" asp-for="PmqActive" type="checkbox" id="flexSwitchActive" checked />
+                            <label class="form-check-label fw-semibold" for="flexSwitchActive">Kích hoạt tài khoản</label>
+                        </div>
+
+                        <div class="d-flex justify-content-between pt-2">
+                            <a asp-action="Index" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-1"></i>Quay lại
+                            </a>
+                            <button type="submit" class="btn btn-success px-4">
+                                <i class="bi bi-save me-1"></i>Lưu Dữ Liệu
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

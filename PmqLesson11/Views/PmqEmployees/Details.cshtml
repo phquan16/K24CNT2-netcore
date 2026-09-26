@@ -1,0 +1,63 @@
+@model PmqLesson11.Models.PmqEmployee
+
+@{
+    ViewData["Title"] = "Chi Tiết sinh Viên";
+}
+
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-7">
+            <div class="card shadow border-0">
+                <div class="card-header bg-info text-white py-3">
+                    <h4 class="mb-0 fw-bold"><i class="bi bi-person-vcard-fill me-2"></i>Chi Tiết Nhân Viên</h4>
+                </div>
+                <div class="card-body p-4">
+                    <dl class="row mb-0 fs-6">
+                        <dt class="col-sm-4 text-muted fw-semibold py-2">Họ và Tên:</dt>
+                        <dd class="col-sm-8 fw-bold text-dark py-2 border-bottom">@Html.DisplayFor(model => model.PmqName)</dd>
+
+                        <dt class="col-sm-4 text-muted fw-semibold py-2">Giới Tính:</dt>
+                        <dd class="col-sm-8 py-2 border-bottom">@Html.DisplayFor(model => model.PmqGender)</dd>
+
+                        <dt class="col-sm-4 text-muted fw-semibold py-2">Ngày Sinh:</dt>
+                        <dd class="col-sm-8 py-2 border-bottom">
+                            @(Model.PmqBirthDay.HasValue ? Model.PmqBirthDay.Value.ToString("dd/MM/yyyy") : "Chưa cập nhật")
+                        </dd>
+
+                        <dt class="col-sm-4 text-muted fw-semibold py-2">Email:</dt>
+                        <dd class="col-sm-8 py-2 border-bottom">
+                            <a href="mailto:@Model.PmqEmail" class="text-decoration-none">@Model.PmqEmail</a>
+                        </dd>
+
+                        <dt class="col-sm-4 text-muted fw-semibold py-2">Số Điện Thoại:</dt>
+                        <dd class="col-sm-8 py-2 border-bottom">@Html.DisplayFor(model => model.PmqPhone)</dd>
+
+                        <dt class="col-sm-4 text-muted fw-semibold py-2">Trạng Thái:</dt>
+                        <dd class="col-sm-8 py-2">
+                            @if (Model.PmqActive == true)
+                            {
+                                <span class="badge bg-success-subtle text-success border border-success px-3 py-2">
+                                    Hoạt Động
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary-subtle text-secondary border border-secondary px-3 py-2">
+                                    Tạm Khóa
+                                </span>
+                            }
+                        </dd>
+                    </dl>
+                </div>
+                <div class="card-footer bg-light d-flex justify-content-between py-3">
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-1"></i>Quay lại danh sách
+                    </a>
+                    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning fw-bold">
+                        <i class="bi bi-pencil me-1"></i>Chỉnh Sửa
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
