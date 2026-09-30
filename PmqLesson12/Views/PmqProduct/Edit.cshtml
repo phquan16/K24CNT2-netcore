@@ -1,0 +1,78 @@
+﻿@model PmqLesson12.Models.Product
+
+@{
+    ViewData["Title"] = "Chỉnh sửa sản phẩm";
+}
+
+<div class="container mt-4">
+    <h2>Chỉnh sửa sản phẩm</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <input type="hidden" asp-for="PmqId" />
+
+                <div class="mb-3">
+                    <label asp-for="PmqName" class="control-label"></label>
+                    <input asp-for="PmqName" class="form-control" />
+                    <span asp-validation-for="PmqName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PmqPrice" class="control-label"></label>
+                    <input asp-for="PmqPrice" class="form-control" />
+                    <span asp-validation-for="PmqPrice" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PmqSalePrice" class="control-label"></label>
+                    <input asp-for="PmqSalePrice" class="form-control" />
+                    <span asp-validation-for="PmqSalePrice" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PmqStatus" class="control-label"></label>
+                    <input asp-for="PmqStatus" class="form-control" />
+                    <span asp-validation-for="PmqStatus" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PmqCreateDate" class="control-label"></label>
+                    <input asp-for="PmqCreateDate" class="form-control" />
+                    <span asp-validation-for="PmqCreateDate" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PmqImages" class="control-label"></label>
+                    <input asp-for="PmqImages" class="form-control" />
+                    <span asp-validation-for="PmqImages" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PmqCategoryId" class="control-label"></label>
+                    <input asp-for="PmqCategoryId" class="form-control" />
+                    <span asp-validation-for="PmqCategoryId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PmqDescription" class="control-label"></label>
+                    <textarea asp-for="PmqDescription" class="form-control"></textarea>
+                    <span asp-validation-for="PmqDescription" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <input type="submit" value="Lưu thay đổi" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

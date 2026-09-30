@@ -1,0 +1,32 @@
+﻿@model PmqLesson12.Models.Product
+
+@{
+    ViewData["Title"] = "Xóa sản phẩm";
+}
+
+<div class="container mt-4">
+    <h2>Xóa sản phẩm</h2>
+    <h3 class="text-danger">Bạn có chắc chắn muốn xóa sản phẩm này không?</h3>
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PmqId)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.PmqId)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PmqName)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.PmqName)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PmqPrice)</dt>
+            <dd class="col-sm-9">@Model.PmqPrice.ToString("N0") đ</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PmqStatus)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.PmqStatus)</dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="PmqId" />
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+        </form>
+    </div>
+</div>

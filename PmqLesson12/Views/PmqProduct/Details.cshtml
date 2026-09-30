@@ -1,0 +1,44 @@
+﻿@model PmqLesson12.Models.Product
+
+@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+}
+
+<div class="container mt-4">
+    <h2>Chi tiết sản phẩm</h2>
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PmqId)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.PmqId)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PmqName)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.PmqName)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PmqPrice)</dt>
+            <dd class="col-sm-9">@Model.PmqPrice.ToString("N0") đ</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PmqSalePrice)</dt>
+            <dd class="col-sm-9">@(Model.PmqSalePrice.HasValue ? Model.PmqSalePrice.Value.ToString("N0") + " đ" : "Không có")</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PmqStatus)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.PmqStatus)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PmqCreateDate)</dt>
+            <dd class="col-sm-9">@Model.PmqCreateDate.ToString("dd/MM/yyyy")</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PmqImages)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.PmqImages)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PmqCategoryId)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.PmqCategoryId)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PmqDescription)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.PmqDescription)</dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.PmqId" class="btn btn-warning">Chỉnh sửa</a> |
+        <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+    </div>
+</div>

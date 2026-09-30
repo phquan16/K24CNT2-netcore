@@ -1,0 +1,77 @@
+﻿@model PmqLesson12.Models.Product
+
+@{
+    ViewData["Title"] = "Thêm mới sản phẩm";
+}
+
+<div class="container mt-4">
+    <h2>Thêm mới sản phẩm</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <!-- QUAN TRỌNG: Thêm enctype="multipart/form-data" để upload được file -->
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="PmqId" class="control-label"></label>
+                    <input asp-for="PmqId" class="form-control" />
+                    <span asp-validation-for="PmqId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PmqName" class="control-label"></label>
+                    <input asp-for="PmqName" class="form-control" />
+                    <span asp-validation-for="PmqName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PmqPrice" class="control-label"></label>
+                    <input asp-for="PmqPrice" class="form-control" />
+                    <span asp-validation-for="PmqPrice" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PmqSalePrice" class="control-label"></label>
+                    <input asp-for="PmqSalePrice" class="form-control" />
+                    <span asp-validation-for="PmqSalePrice" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PmqStatus" class="control-label"></label>
+                    <input asp-for="PmqStatus" class="form-control" />
+                    <span asp-validation-for="PmqStatus" class="text-danger"></span>
+                </div>
+
+                <!-- Thay ô nhập text bằng input file để chọn ảnh từ máy -->
+                <div class="mb-3">
+                    <label class="control-label">Chọn ảnh từ máy</label>
+                    <input type="file" name="imageFile" class="form-control" accept="image/*" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PmqCategoryId" class="control-label"></label>
+                    <input asp-for="PmqCategoryId" class="form-control" />
+                    <span asp-validation-for="PmqCategoryId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PmqDescription" class="control-label"></label>
+                    <textarea asp-for="PmqDescription" class="form-control"></textarea>
+                    <span asp-validation-for="PmqDescription" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <input type="submit" value="Tạo mới" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
