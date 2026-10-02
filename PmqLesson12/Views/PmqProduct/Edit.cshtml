@@ -9,10 +9,13 @@
     <hr />
     <div class="row">
         <div class="col-md-6">
-            <form asp-action="Edit">
+            <!-- QUAN TRỌNG: Thêm enctype="multipart/form-data" để gửi file ảnh -->
+            <form asp-action="Edit" method="post" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                 <input type="hidden" asp-for="PmqId" />
+                <!-- Giữ lại đường dẫn ảnh cũ để nếu không chọn ảnh mới thì vẫn giữ nguyên ảnh cũ -->
+                <input type="hidden" asp-for="PmqImages" />
 
                 <div class="mb-3">
                     <label asp-for="PmqName" class="control-label"></label>
@@ -44,10 +47,21 @@
                     <span asp-validation-for="PmqCreateDate" class="text-danger"></span>
                 </div>
 
+                <!-- Hiển thị ảnh hiện tại và cho phép chọn ảnh mới từ máy -->
                 <div class="mb-3">
-                    <label asp-for="PmqImages" class="control-label"></label>
-                    <input asp-for="PmqImages" class="form-control" />
-                    <span asp-validation-for="PmqImages" class="text-danger"></span>
+                    <label class="control-label">Ảnh sản phẩm</label>
+                    <div class="mb-2">
+                        @if (!string.IsNullOrEmpty(Model.PmqImages))
+                        {
+                            <img src="@Model.PmqImages" alt="Current Image" style="width: 80px; height: 80px; object-fit: cover;" class="rounded border" />
+                        }
+                        else
+                        {
+                            <span class="text-muted">Chưa có ảnh</span>
+                        }
+                    </div>
+                    <input type="file" name="imageFile" class="form-control" accept="image/*" />
+                    <small class="text-muted">Chọn ảnh mới nếu muốn thay thế ảnh cũ.</small>
                 </div>
 
                 <div class="mb-3">

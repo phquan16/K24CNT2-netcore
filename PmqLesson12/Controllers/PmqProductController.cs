@@ -122,32 +122,45 @@ namespace PmqLesson12.Controllers
         }
 
         // POST: PmqProduct/Edit/5
+        // POST: PmqProduct/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("PmqId,PmqName,PmqPrice,PmqSalePrice,PmqStatus,PmqCreateDate,PmqImages,PmqCategoryId,PmqDescription")] Product product)
+        public async Task<IActionResult> Edit(string id, [Bind("PmqId,PmqName,PmqPrice,PmqSalePrice,PmqStatus,PmqCreateDate,PmqImages,PmqCategoryId,PmqDescription")] Product product, IFormFile? imageFile)
         {
-            if (id != product.PmqId)
-            {
-                return NotFound();
-            }
+            if (id != product.PmqId) return NotFound();
 
             if (ModelState.IsValid)
             {
                 try
                 {
+                    // Nếu người dùng chọn ảnh mới từ máy
+                    if (imageFile != null && imageFile.Length > 0)
+                    {
+                        string fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+                        string uploadDir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/products");
+
+                        if (!Directory.Exists(uploadDir))
+                        {
+                            Directory.CreateDirectory(uploadDir);
+                        }
+
+                        string filePath = Path.Combine(uploadDir, fileName);
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await imageFile.CopyToAsync(fileStream);
+                        }
+
+                        // Cập nhật đường dẫn ảnh mới vào model
+                        product.PmqImages = "/images/products/" + fileName;
+                    }
+
                     _context.Update(product);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.PmqId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    if (!ProductExists(product.PmqId)) return NotFound();
+                    else throw;
                 }
                 return RedirectToAction(nameof(Index));
             }

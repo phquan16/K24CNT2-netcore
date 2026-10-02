@@ -1,8 +1,50 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Trang chủ";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-3">
+    <div id="carouselExampleIndicators" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="3000">
+                <img src="~/Images/2.jpg" class="d-block w-100" alt="Banner 1" style="height: 400px; object-fit: cover;">
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+                    <h5>Chào mừng đến với cửa hàng</h5>
+                    <p>Khám phá các sản phẩm thời trang và túi xách chất lượng cao.</p>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="~/Images/3.jpg" class="d-block w-100" alt="Banner 2" style="height: 400px; object-fit: cover;">
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+                    <h5>Công nghệ hiện đại</h5>
+                    <p>Giải pháp phát triển web với ASP.NET Core MVC & Entity Framework.</p>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <!-- Đã sửa lại đường dẫn có dấu / đúng chuẩn thư mục Images -->
+                <img src="~/Images/4.jpg" class="d-block w-100" alt="Banner 3" style="height: 400px; object-fit: cover;">
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+                    <h5>Ưu đãi đặc biệt</h5>
+                    <p>Nhiều mẫu sản phẩm mới cập nhật liên tục mỗi ngày.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nút bấm chuyển slide trái/phải -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 </div>
+
+ 
